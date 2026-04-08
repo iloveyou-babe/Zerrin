@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Birthday Zerrin 😘</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --lav-200:#e9d5ff;--lav-300:#d8b4fe;--lav-400:#c084fc;--lav-500:#a855f7;
+  --lav-600:#9333ea;--lav-700:#7c3aed;--lav-900:#4c1d95;
+  --rose-deep:#ec4899;
+  --glass-bg:rgba(255,255,255,0.12);--glass-border:rgba(255,255,255,0.25);
+  --glass-shadow:0 8px 32px rgba(109,40,217,0.18);
+}
+html,body{min-height:100%;font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+body{background:linear-gradient(135deg,#1a0533 0%,#2d1065 25%,#4c1d95 50%,#2d1065 75%,#1a0533 100%);background-size:400% 400%;animation:bgShift 12s ease infinite;min-height:100vh;}
+@keyframes bgShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+
+/* ❤️ HEART PARTICLES */
+.hearts-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.heart-particle{position:absolute;font-size:1.2rem;animation:heartFloat linear infinite;user-select:none;}
+@keyframes heartFloat{
+  0%{transform:translateY(110vh) rotate(-15deg) scale(0.6);opacity:0;}
+  10%{opacity:0.9;}
+  50%{transform:translateY(50vh) rotate(15deg) scale(1);}
+  90%{opacity:0.6;}
+  100%{transform:translateY(-10vh) rotate(-10deg) scale(0.8);opacity:0;}
+}
+
+.stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.1;}50%{opacity:.9;}}
+/* PAGES */
+.page{display:none;min-height:100vh;position:relative;z-index:1;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;}
+.page.active{display:flex;}
+#page3,#page4,#page5,#page6{justify-content:flex-start;padding-top:2.5rem;padding-bottom:4rem;}
+/* TYPOGRAPHY */
+.header-text{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,6vw,2.8rem);color:#fff;text-align:center;margin-bottom:1.4rem;text-shadow:0 0 30px rgba(216,180,254,.6),0 2px 4px rgba(0,0,0,.3);letter-spacing:.02em;animation:fadeDown .8s ease both;}
+.subheader{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,3.5vw,1.3rem);color:var(--lav-200);text-align:center;margin-bottom:1.4rem;letter-spacing:.04em;animation:fadeDown .9s ease both;}
+.page3-intro{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,3.5vw,1.2rem);color:var(--lav-200);text-align:center;margin-bottom:1.4rem;padding:0 .5rem;}
+.divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--lav-400),transparent);margin:1rem auto;}
+/* GLASS */
+.glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;padding:2.2rem 2rem;width:100%;max-width:420px;box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.15);animation:fadeUp .8s ease both;position:relative;overflow:hidden;}
+.glass-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,rgba(216,180,254,.06) 0%,transparent 60%);pointer-events:none;}
+.question-text{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,4.5vw,1.6rem);color:#fff;text-align:center;line-height:1.5;margin-bottom:1.8rem;text-shadow:0 1px 3px rgba(0,0,0,.3);}
+/* BUTTONS */
+.btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;padding:.85rem 2.2rem;border-radius:50px;border:none;cursor:pointer;transition:all .25s ease;letter-spacing:.03em;min-width:110px;}
+.btn-yes{background:linear-gradient(135deg,var(--lav-500),var(--rose-deep));color:#fff;box-shadow:0 4px 20px rgba(168,85,247,.5);animation:pulseGlow 2.5s ease-in-out infinite;}
+.btn-yes:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 28px rgba(168,85,247,.65);}
+.btn-no{background:rgba(255,255,255,.1);color:var(--lav-200);border:1px solid rgba(255,255,255,.2);}
+.btn-no:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);}
+/* GHOST */
+.horror-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(5,0,15,.96);flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
+.horror-overlay.show{display:flex;animation:horrorIn .3s ease;}
+@keyframes horrorIn{from{opacity:0;}to{opacity:1;}}
+.ghost-svg{filter:drop-shadow(0 0 20px rgba(160,0,255,.8));width:clamp(110px,38vw,180px);height:auto;animation:ghostBob 1.5s ease-in-out infinite;}
+@keyframes ghostBob{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-14px) rotate(1deg);}}
+.horror-text{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,5vw,1.9rem);color:#c084fc;text-align:center;margin:1.2rem 0 .4rem;text-shadow:0 0 20px rgba(192,132,252,.8);animation:flicker 2s ease-in-out infinite;max-width:340px;line-height:1.4;}
+.horror-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.9rem,3.5vw,1.2rem);color:#e879f9;text-align:center;margin-bottom:1.6rem;text-shadow:0 0 10px rgba(232,121,249,.6);}
+@keyframes flicker{0%,100%{opacity:1;}45%{opacity:.9;}50%{opacity:.25;}55%{opacity:.9;}83%{opacity:1;}87%{opacity:.45;}92%{opacity:1;}}
+.btn-tryagain{background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff;font-family:'DM Sans',sans-serif;font-weight:500;padding:.85rem 2.2rem;border-radius:50px;border:none;cursor:pointer;font-size:1rem;box-shadow:0 4px 20px rgba(192,38,211,.5);transition:all .2s;}
+.btn-tryagain:hover{transform:scale(1.05);}
+/* Q-CARDS page3 */
+.q-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:20px;padding:1.4rem 1.6rem;width:100%;max-width:440px;margin-bottom:1rem;box-shadow:var(--glass-shadow);}
+.q-num{font-size:.75rem;color:var(--lav-300);margin-bottom:.4rem;letter-spacing:.12em;font-weight:500;}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(.95rem,3vw,1.1rem);color:#fff;margin-bottom:.9rem;line-height:1.5;}
+textarea{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:.75rem 1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;resize:none;min-height:75px;outline:none;transition:border .2s;}
+textarea::placeholder{color:rgba(255,255,255,.35);}
+textarea:focus{border-color:var(--lav-400);}
+textarea.required-error{border-color:#f87171 !important;animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.field-hint{font-size:.75rem;color:#f87171;margin-top:.3rem;display:none;}
+.field-hint.show{display:block;}
+.submit-area{width:100%;max-width:440px;margin-top:.5rem;}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--lav-600),var(--rose-deep));color:#fff;font-family:'DM Sans',sans-serif;font-weight:500;font-size:1rem;padding:1rem;border-radius:50px;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(147,51,234,.5);transition:all .25s;letter-spacing:.03em;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(147,51,234,.65);}
+.saved-badge{background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);color:#86efac;font-size:.85rem;padding:.5rem 1.2rem;border-radius:50px;text-align:center;margin-top:.8rem;display:none;}
+/* Saving spinner */
+.saving-indicator{text-align:center;color:var(--lav-300);font-size:.85rem;padding:.5rem;display:none;}
+/* QUIZ page4 */
+.quiz-progress{width:100%;max-width:440px;margin-bottom:1.2rem;}
+.progress-label{font-size:.78rem;color:var(--lav-300);margin-bottom:6px;letter-spacing:.06em;}
+.progress-bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--lav-500),var(--rose-deep));border-radius:4px;transition:width .5s ease;}
+.quiz-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;padding:2rem 1.8rem;width:100%;max-width:440px;box-shadow:var(--glass-shadow);}
+.quiz-q{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,4vw,1.35rem);color:#fff;margin-bottom:1.4rem;line-height:1.5;text-align:center;}
+.options-grid{display:flex;flex-direction:column;gap:.75rem;}
+.opt-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:.9rem 1.2rem;color:#e9d5ff;font-family:'DM Sans',sans-serif;font-size:.95rem;cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:.8rem;}
+.opt-btn:hover{background:rgba(168,85,247,.2);border-color:var(--lav-400);}
+.opt-letter{width:28px;height:28px;border-radius:50%;background:rgba(168,85,247,.3);border:1px solid var(--lav-400);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:500;color:var(--lav-200);flex-shrink:0;}
+/* PAGE 5 - About */
+.about-section{width:100%;max-width:460px;}
+.about-tap-box{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:1.6rem 1.8rem;margin-bottom:1rem;cursor:pointer;box-shadow:var(--glass-shadow);transition:all .3s;position:relative;overflow:hidden;}
+.about-tap-box:hover{background:rgba(255,255,255,.16);border-color:var(--lav-400);}
+.tap-preview{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--lav-200);text-align:center;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.tap-hint{font-size:.75rem;color:var(--lav-400);text-align:center;margin-top:.4rem;letter-spacing:.04em;}
+.about-full-text{display:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#f3e8ff;line-height:1.88;animation:fadeUp .5s ease both;}
+.about-tap-box.expanded .tap-preview,.about-tap-box.expanded .tap-hint{display:none;}
+.about-tap-box.expanded .about-full-text{display:block;}
+/* Image grid */
+.img-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;width:100%;max-width:460px;margin:1rem 0;}
+.img-frame{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(16px);border-radius:18px;overflow:hidden;aspect-ratio:1;position:relative;box-shadow:var(--glass-shadow);}
+.img-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;}
+.img-placeholder-icon{font-size:2rem;opacity:.4;}
+.img-placeholder-text{font-size:.72rem;color:rgba(255,255,255,.35);text-align:center;padding:0 .5rem;}
+.img-add-btn{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+/* Wishes */
+.wishes-box{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:2rem 1.8rem;width:100%;max-width:460px;box-shadow:var(--glass-shadow);}
+.wishes-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:1rem;text-align:center;text-shadow:0 0 20px rgba(216,180,254,.4);}
+.wish-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--lav-100);line-height:1.8;text-align:center;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.wish-line:last-child{border-bottom:none;}
+.birthday-countdown{background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);border-radius:14px;padding:1rem;text-align:center;margin-top:1rem;}
+.countdown-label{font-size:.78rem;color:var(--lav-300);letter-spacing:.08em;margin-bottom:.3rem;}
+.countdown-val{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;text-shadow:0 0 15px rgba(216,180,254,.5);}
+/* Page 6 */
+.thankyou-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:28px;padding:2.5rem 2rem;width:100%;max-width:400px;text-align:center;box-shadow:var(--glass-shadow);animation:fadeUp .9s ease both;}
+.heart-big{font-size:4rem;animation:heartbeat 1.2s ease-in-out infinite;display:block;margin-bottom:1rem;}
+@keyframes heartbeat{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+.ty-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,5vw,2rem);color:#fff;margin-bottom:.8rem;text-shadow:0 0 20px rgba(216,180,254,.5);}
+.ty-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--lav-200);line-height:1.7;}
+.nav-btn{background:linear-gradient(135deg,var(--lav-700),var(--rose-deep));color:#fff;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.95rem;padding:.85rem 2rem;border-radius:50px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(124,58,237,.45);transition:all .25s;margin-top:1.2rem;letter-spacing:.03em;width:100%;max-width:460px;}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.6);}
+/* BACK BUTTON */
+.back-btn{position:fixed;top:16px;left:16px;z-index:200;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--lav-200);font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.5rem 1rem .5rem .7rem;border-radius:50px;cursor:pointer;display:none;align-items:center;gap:.4rem;backdrop-filter:blur(12px);transition:all .2s;-webkit-backdrop-filter:blur(12px);}
+.back-btn.visible{display:flex;animation:fadeDown .4s ease both;}
+.back-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-1px);}
+.back-btn:active{transform:scale(0.96);}
+/* Mobile enhancements */
+@media(max-width:480px){
+  .glass-card{padding:1.6rem 1.2rem;}
+  .q-card{padding:1.1rem 1.1rem;}
+  .btn{padding:.8rem 1.6rem;font-size:.95rem;}
+  .opt-btn{padding:.85rem 1rem;}
+  .about-tap-box{padding:1.3rem 1.3rem;}
+  .wishes-box{padding:1.5rem 1.2rem;}
+  .quiz-card{padding:1.5rem 1.2rem;}
+  .img-grid{gap:.6rem;}
+  .back-btn{top:12px;left:12px;font-size:.78rem;padding:.4rem .85rem .4rem .6rem;}
+  .admin-trigger{bottom:14px;right:14px;}
+  .header-text{margin-top:2.5rem;}
+  .btn-yes,.btn-no,.btn-submit,.btn-tryagain,.btn-unlock,.nav-btn{-webkit-tap-highlight-color:transparent;}
+}
+/* Touch ripple */
+.btn-yes:active,.btn-no:active,.opt-btn:active,.nav-btn:active{transform:scale(0.97)!important;transition:transform .1s!important;}
+/* Page entrance animation */
+.page.active .glass-card,.page.active .q-card,.page.active .quiz-card,.page.active .about-tap-box,.page.active .wishes-box,.page.active .img-grid{animation:fadeUp .55s cubic-bezier(.22,.68,0,1.2) both;}
+.page.active .q-card:nth-child(2){animation-delay:.08s;}
+.page.active .q-card:nth-child(3){animation-delay:.16s;}
+.page.active .about-tap-box:nth-child(3){animation-delay:.1s;}
+/* Pulse glow on CTA */
+@keyframes pulseGlow{0%,100%{box-shadow:0 4px 24px rgba(147,51,234,.5);}50%{box-shadow:0 4px 36px rgba(236,72,153,.7),0 0 60px rgba(147,51,234,.3);}}
+/* ADMIN LOCK */
+.admin-lock{display:none;position:fixed;inset:0;background:rgba(10,5,25,.98);z-index:9991;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
+.admin-lock.show{display:flex;animation:fadeIn .3s ease;}
+.lock-card{background:rgba(76,29,149,.4);border:1px solid rgba(196,132,252,.25);border-radius:20px;padding:2rem 1.8rem;width:100%;max-width:320px;text-align:center;}
+.lock-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--lav-300);margin-bottom:.4rem;}
+.lock-sub{font-size:.85rem;color:var(--lav-400);margin-bottom:1.5rem;}
+.lock-input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:.8rem 1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;text-align:center;letter-spacing:.1em;margin-bottom:.8rem;transition:border .2s;}
+.lock-input:focus{border-color:var(--lav-400);}
+.lock-input::placeholder{color:rgba(255,255,255,.3);}
+.btn-unlock{width:100%;background:linear-gradient(135deg,var(--lav-600),var(--rose-deep));color:#fff;font-family:'DM Sans',sans-serif;padding:.85rem;border-radius:50px;border:none;cursor:pointer;font-weight:500;margin-bottom:.8rem;transition:all .2s;}
+.btn-unlock:hover{transform:scale(1.02);}
+.lock-error{color:#f87171;font-size:.85rem;display:none;margin-bottom:.6rem;}
+.btn-lock-cancel{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--lav-300);font-family:'DM Sans',sans-serif;padding:.6rem 1.5rem;border-radius:50px;cursor:pointer;font-size:.85rem;transition:all .2s;}
+.btn-lock-cancel:hover{background:rgba(255,255,255,.08);}
+/* ADMIN PANEL */
+#admin-panel{display:none;position:fixed;inset:0;background:rgba(10,5,25,.97);z-index:9992;overflow-y:auto;padding:2rem 1.2rem;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.admin-inner{max-width:580px;margin:0 auto;}
+.admin-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--lav-300);margin-bottom:.3rem;text-align:center;}
+.admin-sub{color:var(--lav-400);font-size:.85rem;text-align:center;margin-bottom:1.8rem;}
+.admin-tabs{display:flex;gap:.5rem;margin-bottom:1.4rem;background:rgba(255,255,255,.05);padding:4px;border-radius:12px;}
+.admin-tab{flex:1;padding:.6rem;border-radius:10px;border:none;background:transparent;color:var(--lav-300);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;transition:all .2s;}
+.admin-tab.active{background:rgba(168,85,247,.3);color:#fff;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.resp-card{background:rgba(76,29,149,.3);border:1px solid rgba(196,132,252,.2);border-radius:16px;padding:1.4rem;margin-bottom:1rem;position:relative;}
+.resp-time{font-size:.75rem;color:var(--lav-400);margin-bottom:.8rem;}
+.resp-q{font-size:.78rem;font-weight:500;color:var(--lav-300);margin-bottom:.25rem;letter-spacing:.04em;}
+.resp-a{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#e9d5ff;line-height:1.5;margin-bottom:.8rem;padding-left:.8rem;border-left:2px solid var(--lav-500);}
+.resp-a:last-child{margin-bottom:0;}
+.btn-delete{position:absolute;top:.8rem;right:.8rem;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;font-size:.75rem;padding:.3rem .7rem;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-delete:hover{background:rgba(239,68,68,.3);}
+.admin-empty{text-align:center;color:var(--lav-400);font-style:italic;padding:2rem;}
+.quiz-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:.78rem;margin-left:6px;vertical-align:middle;}
+.badge-ok{background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);color:#86efac;}
+.badge-ng{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;}
+.btn-close-admin{display:block;width:100%;text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--lav-200);font-family:'DM Sans',sans-serif;padding:.8rem;border-radius:50px;cursor:pointer;margin-top:1.5rem;font-size:.9rem;transition:background .2s;}
+.btn-close-admin:hover{background:rgba(255,255,255,.13);}
+.admin-trigger{position:fixed;bottom:16px;right:16px;width:36px;height:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50%;z-index:100;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s;}
+.admin-trigger:hover{background:rgba(255,255,255,.1);}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+/* Firebase status */
+.fb-status{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);color:#86efac;font-size:.78rem;padding:.35rem 1rem;border-radius:50px;z-index:500;display:none;animation:fadeIn .3s ease;}
+</style>
+</head>
+<body>
+
+<div class="stars-bg" id="stars"></div>
+<div class="hearts-bg" id="hearts"></div>
+
+<div class="fb-status" id="fbStatus"></div>
+
+<!-- GHOST HORROR -->
+<div class="horror-overlay" id="horrorOverlay">
+  <svg class="ghost-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="gg" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#e9d5ff"/><stop offset="100%" stop-color="#7c3aed" stop-opacity=".6"/></radialGradient>
+      <filter id="gf"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <ellipse cx="100" cy="95" rx="72" ry="80" fill="url(#gg)" filter="url(#gf)"/>
+    <rect x="28" y="95" width="144" height="100" fill="url(#gg)" filter="url(#gf)"/>
+    <path d="M28,195 Q46,220 64,195 Q82,170 100,195 Q118,220 136,195 Q154,170 172,195 L172,255 Q154,272 136,255 Q118,238 100,255 Q82,272 64,255 Q46,238 28,255 Z" fill="url(#gg)" filter="url(#gf)"/>
+    <ellipse cx="78" cy="90" rx="14" ry="18" fill="#1a0533"/>
+    <ellipse cx="122" cy="90" rx="14" ry="18" fill="#1a0533"/>
+    <ellipse cx="80" cy="88" rx="5" ry="6" fill="#c084fc"/>
+    <ellipse cx="124" cy="88" rx="5" ry="6" fill="#c084fc"/>
+    <path d="M76,118 Q100,140 124,118" stroke="#1a0533" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="84" cy="127" rx="4" ry="5" fill="#1a0533"/>
+    <ellipse cx="100" cy="133" rx="4" ry="5" fill="#1a0533"/>
+    <ellipse cx="116" cy="127" rx="4" ry="5" fill="#1a0533"/>
+    <ellipse cx="22" cy="130" rx="16" ry="10" fill="url(#gg)" filter="url(#gf)" transform="rotate(-20,22,130)"/>
+    <ellipse cx="178" cy="130" rx="16" ry="10" fill="url(#gg)" filter="url(#gf)" transform="rotate(20,178,130)"/>
+  </svg>
+  <div class="horror-text" id="horrorText">👻 BOO! Wrong answer!</div>
+  <div class="horror-sub" id="horrorSub">Try again later...<br>Your husband is angry on you! 😡</div>
+  <button class="btn-tryagain" onclick="closeHorror()">Okay okay, let me try again 🥺</button>
+</div>
+
+<!-- ADMIN LOCK -->
+<div class="admin-lock" id="adminLock">
+  <div class="lock-card">
+    <div class="lock-title">🔐 Admin</div>
+    <div class="lock-sub">Enter the secret password</div>
+    <input class="lock-input" type="password" id="adminPw" placeholder="Password..." onkeydown="if(event.key==='Enter')checkPw()">
+    <div class="lock-error" id="lockErr">Wrong password! 🚫</div>
+    <button class="btn-unlock" onclick="checkPw()">Unlock 💜</button>
+    <button class="btn-lock-cancel" onclick="closeLock()">Cancel</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-inner">
+    <div class="admin-title">💜 Admin Panel</div>
+    <div class="admin-sub">Zerrin's answers — saved with love</div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('tab-ans')">📝 Her Answers</button>
+      <button class="admin-tab" onclick="switchTab('tab-quiz')">🎯 Quiz Results</button>
+    </div>
+    <div class="tab-content active" id="tab-ans"></div>
+    <div class="tab-content" id="tab-quiz"></div>
+    <button class="btn-close-admin" onclick="closeAdmin()">✕ Close Panel</button>
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="header-text">Birthday girl Zerrin babe 😘</div>
+  <div class="divider"></div>
+  <div class="glass-card">
+    <div class="question-text">Are you happy with me? 🥰</div>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="goPage('page2')">Yes 💜</button>
+      <button class="btn btn-no" onclick="showHorror('👻 BOO! Wrong answer!','Try again later...<br>Your husband is angry on you! 😡')">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="header-text" style="opacity:1;">You make me the happiest 💜</div>
+  <div class="divider"></div>
+  <div class="glass-card">
+    <div class="question-text">Do you want to marry me? 💍</div>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="goPage('page3')">Yes, always! 💜</button>
+      <button class="btn btn-no" onclick="showHorror('👻 BOO! Wrong answer!','Try again later...<br>Your husband is angry on you! 😡')">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: Text Questions -->
+<div class="page" id="page3">
+  <div class="header-text" style="opacity:1;margin-bottom:.6rem;">Answer these, my love 💜</div>
+  <div class="page3-intro">If you want to marry me, answer all three properly 🌸</div>
+  <div class="q-card">
+    <div class="q-num">QUESTION 01</div>
+    <div class="q-text">Enaku Joshua ku enna difference? 🤔</div>
+    <textarea id="a1" placeholder="Write your heart out..."></textarea>
+    <div class="field-hint" id="hint1">Please answer this question, Zerrin 💜</div>
+  </div>
+  <div class="q-card">
+    <div class="q-num">QUESTION 02</div>
+    <div class="q-text">Oru situation la enaku unga vitla appa amma ku etho agitu, nee oru person ku tha blood kuduka mudium kapatha na, yaruku kudupa? 💉</div>
+    <textarea id="a2" placeholder="Be honest, Zerrin..."></textarea>
+    <div class="field-hint" id="hint2">Please answer this question, Zerrin 💜</div>
+  </div>
+  <div class="q-card">
+    <div class="q-num">QUESTION 03</div>
+    <div class="q-text">Life la enkuda enjoy panna moment ethu? 🌟</div>
+    <textarea id="a3" placeholder="Your favourite memory with me..."></textarea>
+    <div class="field-hint" id="hint3">Please answer this question, Zerrin 💜</div>
+  </div>
+  <div class="submit-area">
+    <button class="btn-submit" onclick="submitAnswers()">Submit with Love 💜</button>
+    <div class="saving-indicator" id="savingIndicator">💜 Saving to our memory box...</div>
+    <div class="saved-badge" id="savedBadge">✓ Saved to our memory box!</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Quiz -->
+<div class="page" id="page4">
+  <div class="header-text" style="opacity:1;margin-bottom:.5rem;">How well do you know us? 💜</div>
+  <div class="subheader" style="opacity:1;">Choose the best answer!</div>
+  <div class="quiz-progress">
+    <div class="progress-label" id="quizLabel">Question 1 of 3</div>
+    <div class="progress-bar"><div class="progress-fill" id="quizFill" style="width:33%"></div></div>
+  </div>
+  <div class="quiz-card">
+    <div class="quiz-q" id="quizQ"></div>
+    <div class="options-grid" id="quizOpts"></div>
+  </div>
+</div>
+
+<!-- PAGE 5: About + Photos + Wishes -->
+<div class="page" id="page5">
+  <div class="header-text" style="opacity:1;margin-bottom:.5rem;">About you, in my eyes 💜</div>
+  <div class="about-section">
+
+    <div class="about-tap-box" id="abox1" onclick="toggleAbout('abox1')">
+      <div class="tap-preview">💜 <em>Who is Zerrin to me?</em></div>
+      <div class="tap-hint">Tap to read ✨</div>
+      <div class="about-full-text">Zerrin... you are not just my girlfriend, you are my calm when everything feels like chaos. The moment I saw you, something in me knew — this girl is different. You have this softness that makes everyone around you feel safe, yet a strength that quietly holds everything together. You don't even realise how beautiful you are — not just your face, but the way you care, the way you laugh, the way you say my name. Every day with you feels like the universe finally got something right. You are my favourite person on this entire planet, and I would choose you in every lifetime, every version of this world. Happy Birthday, my love. 🌸</div>
+    </div>
+
+    <div class="img-grid">
+      <div class="img-frame" id="f1"><div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'f1')"></div>
+      <div class="img-frame" id="f2"><div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'f2')"></div>
+      <div class="img-frame" id="f3"><div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'f3')"></div>
+      <div class="img-frame" id="f4"><div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'f4')"></div>
+    </div>
+
+    <div class="about-tap-box" id="abox2" onclick="toggleAbout('abox2')">
+      <div class="tap-preview">🌸 <em>What you mean to me...</em></div>
+      <div class="tap-hint">Tap to read ✨</div>
+      <div class="about-full-text">You know what's funny? Before you, I thought I was fine on my own. Then you came and ruined that perfectly. Now I can't imagine a single morning without thinking about you. Your smile is the first thing I want to see and your voice is the last thing I want to hear. You are my home, Zerrin. Not a place — you. Wherever you are, that's where I belong. I love your stubbornness, your kindness, your silly jokes, even the way you argue. Every piece of you is my favourite thing. Thank you for being you. Thank you for choosing me. 💜</div>
+    </div>
+
+    <div class="wishes-box">
+      <div class="wishes-title">🎂 Happy Birthday, Zerrin 🎂</div>
+      <div class="wish-line">May this year bring you everything your heart quietly wishes for 🌟</div>
+      <div class="wish-line">May you always smile the way you do when you think no one is looking 💜</div>
+      <div class="wish-line">May every door open for you, every dream find its way to you 🌸</div>
+      <div class="wish-line">And may you always have me — your biggest fan, your person, your home 😘</div>
+      <div class="wish-line" style="font-size:1.15rem;color:#fff;padding-top:.8rem;">Happy 28th April, my love. You deserve the entire universe. 🌙✨</div>
+      <div class="birthday-countdown">
+        <div class="countdown-label">DAYS UNTIL YOUR BIRTHDAY</div>
+        <div class="countdown-val" id="cdVal">...</div>
+      </div>
+    </div>
+
+    <button class="nav-btn" onclick="goPage('page6')">Finish with love 💜</button>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+  <div class="thankyou-card">
+    <span class="heart-big">💜</span>
+    <div class="ty-title">You're my everything, Zerrin</div>
+    <div class="divider"></div>
+    <div class="ty-sub">Thank you for choosing me every single day.<br><br>Happy Birthday, my love 🎂😘<br>— Always yours, forever 💜</div>
+  </div>
+</div>
+
+<div class="admin-trigger" onclick="openLock()" title="Admin">⚙</div>
+<button class="back-btn" id="backBtn" onclick="goBack()">‹ Back</button>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBpuAep_E5kAiOTTngi6-ONDpGrqIMkgeo",
+  authDomain: "birthday-c8b32.firebaseapp.com",
+  projectId: "birthday-c8b32",
+  storageBucket: "birthday-c8b32.firebasestorage.app",
+  messagingSenderId: "868934456266",
+  appId: "1:868934456266:web:d93d2a1cecf5e6c970b533",
+  measurementId: "G-XCB0Q3C7CJ"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Expose DB functions globally
+window._fbSaveAnswers = async (entry) => {
+  await addDoc(collection(db, "zerrin_answers"), entry);
+};
+window._fbGetAnswers = async () => {
+  const snap = await getDocs(collection(db, "zerrin_answers"));
+  return snap.docs.map(d => ({id: d.id, ...d.data()}));
+};
+window._fbDeleteAnswer = async (id) => {
+  await deleteDoc(doc(db, "zerrin_answers", id));
+};
+window._fbSaveQuiz = async (entry) => {
+  await addDoc(collection(db, "zerrin_quiz"), entry);
+};
+window._fbGetQuiz = async () => {
+  const snap = await getDocs(collection(db, "zerrin_quiz"));
+  return snap.docs.map(d => ({id: d.id, ...d.data()}));
+};
+window._fbDeleteQuiz = async (id) => {
+  await deleteDoc(doc(db, "zerrin_quiz", id));
+};
+window._fbSaveImage = async (frameId, base64) => {
+  await setDoc(doc(db, "zerrin_images", frameId), { data: base64, updatedAt: Date.now() });
+};
+window._fbGetImages = async () => {
+  const snap = await getDocs(collection(db, "zerrin_images"));
+  const result = {};
+  snap.docs.forEach(d => { result[d.id] = d.data().data; });
+  return result;
+};
+window._fbReady = true;
+
+// After Firebase is ready, init the app
+window._initApp && window._initApp();
+</script>
+
+<script>
+// ========== STARS ==========
+const se=document.getElementById('stars');
+for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${Math.random()*2.5+1}px;height:${Math.random()*2.5+1}px;animation-duration:${Math.random()*4+2}s;animation-delay:${Math.random()*5}s;`;se.appendChild(s);}
+
+// ========== FLOATING HEARTS ==========
+const heartEmojis = ['❤️','💜','💕','💗','💖','💝','😘','💋','🌸','✨'];
+const he = document.getElementById('hearts');
+for(let i=0;i<22;i++){
+  const h=document.createElement('div');
+  h.className='heart-particle';
+  h.textContent=heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+  const sz=Math.random()*1.2+0.7;
+  h.style.cssText=`left:${Math.random()*100}%;font-size:${sz}rem;animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s;`;
+  he.appendChild(h);
+}
+
+// ========== PAGE PERSISTENCE via hash ==========
+const PAGE_ORDER=['page1','page2','page3','page4','page5','page6'];
+let pageHistory=[];
+
+function goPage(id){
+  const current=document.querySelector('.page.active');
+  if(current && current.id!==id) pageHistory.push(current.id);
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  history.replaceState(null,'','#'+id);
+  if(id==='page4')initQuiz();
+  if(id==='page5'){initCountdown();setTimeout(loadSavedImages,300);}
+  // Show/hide back button
+  const backBtn=document.getElementById('backBtn');
+  if(id==='page1'||pageHistory.length===0){
+    backBtn.classList.remove('visible');
+  } else {
+    backBtn.classList.add('visible');
+  }
+}
+
+function goBack(){
+  if(pageHistory.length===0)return;
+  const prev=pageHistory.pop();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(prev).classList.add('active');
+  window.scrollTo(0,0);
+  history.replaceState(null,'','#'+prev);
+  if(prev==='page4')initQuiz();
+  if(prev==='page5'){initCountdown();setTimeout(loadSavedImages,300);}
+  const backBtn=document.getElementById('backBtn');
+  if(prev==='page1'||pageHistory.length===0){backBtn.classList.remove('visible');}
+  else{backBtn.classList.add('visible');}
+}
+
+// On load: restore page from hash
+window.addEventListener('DOMContentLoaded', ()=>{
+  const hash = location.hash.replace('#','');
+  if(hash && document.getElementById(hash)){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(hash).classList.add('active');
+    if(hash==='page4')initQuiz();
+    if(hash==='page5'){initCountdown();setTimeout(loadSavedImages,600);}
+  }
+});
+
+// ========== HORROR ==========
+function showHorror(txt,sub){
+  document.getElementById('horrorText').innerHTML=txt||'👻 BOO!';
+  document.getElementById('horrorSub').innerHTML=sub||'Try again!';
+  document.getElementById('horrorOverlay').classList.add('show');
+  document.body.style.filter='hue-rotate(120deg) brightness(0.4)';
+  setTimeout(()=>document.body.style.filter='',350);
+}
+function closeHorror(){document.getElementById('horrorOverlay').classList.remove('show');}
+
+// ========== FIREBASE STATUS ==========
+function showFbStatus(msg, ok=true){
+  const el=document.getElementById('fbStatus');
+  el.textContent=msg;
+  el.style.background=ok?'rgba(74,222,128,.15)':'rgba(239,68,68,.15)';
+  el.style.borderColor=ok?'rgba(74,222,128,.3)':'rgba(239,68,68,.3)';
+  el.style.color=ok?'#86efac':'#fca5a5';
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',3000);
+}
+
+// ========== SUBMIT ANSWERS (Firebase) ==========
+async function submitAnswers(){
+  const a1=document.getElementById('a1').value.trim();
+  const a2=document.getElementById('a2').value.trim();
+  const a3=document.getElementById('a3').value.trim();
+
+  // Validate ALL three required
+  let hasError=false;
+  ['a1','a2','a3'].forEach((id,i)=>{
+    const val=document.getElementById(id).value.trim();
+    const hint=document.getElementById('hint'+(i+1));
+    if(!val){
+      document.getElementById(id).classList.add('required-error');
+      hint.classList.add('show');
+      hasError=true;
+      setTimeout(()=>{
+        document.getElementById(id).classList.remove('required-error');
+      },500);
+    } else {
+      document.getElementById(id).classList.remove('required-error');
+      hint.classList.remove('show');
+    }
+  });
+  if(hasError){return;}
+
+  const entry={
+    ts: new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),
+    q1:a1, q2:a2, q3:a3,
+    createdAt: Date.now()
+  };
+
+  // Show saving indicator
+  document.getElementById('savingIndicator').style.display='block';
+  document.querySelector('.btn-submit').disabled=true;
+
+  try {
+    if(window._fbReady && window._fbSaveAnswers){
+      await window._fbSaveAnswers(entry);
+      showFbStatus('💜 Saved to Firebase!');
+    } else {
+      // Fallback to localStorage
+      const arr=JSON.parse(localStorage.getItem('zerrin_answers')||'[]');arr.push(entry);
+      localStorage.setItem('zerrin_answers',JSON.stringify(arr));
+      showFbStatus('💜 Saved locally!');
+    }
+    document.getElementById('savingIndicator').style.display='none';
+    document.getElementById('savedBadge').style.display='block';
+    setTimeout(()=>goPage('page4'),1300);
+  } catch(e){
+    document.getElementById('savingIndicator').style.display='none';
+    document.querySelector('.btn-submit').disabled=false;
+    showFbStatus('⚠ Save failed, trying local...', false);
+    // Fallback
+    const arr=JSON.parse(localStorage.getItem('zerrin_answers')||'[]');arr.push(entry);
+    localStorage.setItem('zerrin_answers',JSON.stringify(arr));
+    setTimeout(()=>goPage('page4'),1000);
+  }
+}
+window.submitAnswers=submitAnswers;
+
+// ========== QUIZ ==========
+const QUIZ=[
+  {q:'My favourite color is... 🎨',opts:['Black','Blue','White','Purple'],ans:0},
+  {q:'Enaku pudicha person yaru? 💜',opts:['Amma','Zerrin','Friends','Myself'],ans:1},
+  {q:'What is my love language for you? 💕',opts:['Gifts','Words of affirmation','Quality time','Acts of service'],ans:2}
+];
+const LETTERS=['A','B','C','D'];
+let curQ=0, quizLog=[];
+
+function initQuiz(){curQ=0;quizLog=[];renderQ();}
+
+function renderQ(){
+  const q=QUIZ[curQ];
+  document.getElementById('quizQ').textContent=q.q;
+  document.getElementById('quizLabel').textContent=`Question ${curQ+1} of ${QUIZ.length}`;
+  document.getElementById('quizFill').style.width=`${((curQ+1)/QUIZ.length)*100}%`;
+  const el=document.getElementById('quizOpts');el.innerHTML='';
+  q.opts.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='opt-btn';
+    b.innerHTML=`<span class="opt-letter">${LETTERS[i]}</span>${opt}`;
+    b.onclick=()=>answerQ(i,b);
+    el.appendChild(b);
+  });
+}
+
+function answerQ(i,btn){
+  const q=QUIZ[curQ];
+  const ok=(i===q.ans);
+  quizLog.push({question:q.q,chosen:`${LETTERS[i]}) ${q.opts[i]}`,correct:`${LETTERS[q.ans]}) ${q.opts[q.ans]}`,ok});
+  if(!ok){
+    btn.style.borderColor='#f87171';btn.style.background='rgba(239,68,68,.18)';
+    showHorror('👻 Wrong! Think again!','That\'s not the right answer, Zerrin...<br>Enaku theriyum unaku theriyum! 😤');
+    setTimeout(()=>renderQ(),0);
+    return;
+  }
+  btn.style.borderColor='#4ade80';btn.style.background='rgba(74,222,128,.2)';
+  setTimeout(()=>{
+    curQ++;
+    if(curQ>=QUIZ.length){saveQuiz();goPage('page5');}
+    else renderQ();
+  },700);
+}
+
+async function saveQuiz(){
+  const entry={ts:new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),log:quizLog,createdAt:Date.now()};
+  try{
+    if(window._fbReady && window._fbSaveQuiz){
+      await window._fbSaveQuiz(entry);
+    } else {
+      const arr=JSON.parse(localStorage.getItem('zerrin_quiz')||'[]');arr.push(entry);
+      localStorage.setItem('zerrin_quiz',JSON.stringify(arr));
+    }
+  } catch(e){
+    const arr=JSON.parse(localStorage.getItem('zerrin_quiz')||'[]');arr.push(entry);
+    localStorage.setItem('zerrin_quiz',JSON.stringify(arr));
+  }
+}
+
+// ========== ABOUT TOGGLE ==========
+function toggleAbout(id){document.getElementById(id).classList.toggle('expanded');}
+window.toggleAbout=toggleAbout;
+
+// ========== IMAGE LOAD + PERSIST to Firebase ==========
+async function loadImg(e,fid){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=async ev=>{
+    const b64=ev.target.result;
+    // Render image but keep the invisible file input for re-upload
+    const el=document.getElementById(fid);
+    el.innerHTML=`<img src="${b64}" alt="Our photo" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
+    // Save to Firebase
+    try{
+      if(window._fbReady && window._fbSaveImage){
+        await window._fbSaveImage(fid, b64);
+        showFbStatus('📸 Photo saved!');
+      } else {
+        const imgs=JSON.parse(localStorage.getItem('zerrin_imgs')||'{}');
+        imgs[fid]=b64; localStorage.setItem('zerrin_imgs',JSON.stringify(imgs));
+      }
+    } catch(err){
+      const imgs=JSON.parse(localStorage.getItem('zerrin_imgs')||'{}');
+      imgs[fid]=b64; localStorage.setItem('zerrin_imgs',JSON.stringify(imgs));
+    }
+  };
+  r.readAsDataURL(f);
+}
+async function loadSavedImages(){
+  let imgs={};
+  try{
+    if(window._fbReady && window._fbGetImages){
+      imgs=await window._fbGetImages();
+    } else {
+      imgs=JSON.parse(localStorage.getItem('zerrin_imgs')||'{}');
+    }
+  } catch(e){
+    imgs=JSON.parse(localStorage.getItem('zerrin_imgs')||'{}');
+  }
+  Object.keys(imgs).forEach(fid=>{
+    const el=document.getElementById(fid);
+    if(el && imgs[fid]){
+      el.innerHTML=`<img src="${imgs[fid]}" alt="Our photo" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
+    }
+  });
+}
+window.loadImg=loadImg;window.loadSavedImages=loadSavedImages;
+
+// ========== COUNTDOWN ==========
+function initCountdown(){
+  const now=new Date();
+  const bd=new Date(now.getFullYear(),3,28);
+  if(now>=bd)bd.setFullYear(bd.getFullYear()+1);
+  const diff=Math.ceil((bd-now)/(864e5));
+  document.getElementById('cdVal').textContent=diff===0?'TODAY IS HER DAY! 🎂🎉':`${diff} days to go 🌸`;
+}
+
+// ========== ADMIN LOCK ==========
+function openLock(){
+  document.getElementById('adminLock').classList.add('show');
+  document.getElementById('adminPw').value='';
+  document.getElementById('lockErr').style.display='none';
+  setTimeout(()=>document.getElementById('adminPw').focus(),300);
+}
+function closeLock(){document.getElementById('adminLock').classList.remove('show');}
+function checkPw(){
+  if(document.getElementById('adminPw').value==='Zerrin'){
+    closeLock();openAdmin();
+  } else {
+    document.getElementById('lockErr').style.display='block';
+    document.getElementById('adminPw').value='';
+    document.getElementById('adminPw').style.borderColor='#f87171';
+    setTimeout(()=>document.getElementById('adminPw').style.borderColor='',1000);
+  }
+}
+window.openLock=openLock;window.closeLock=closeLock;window.checkPw=checkPw;
+
+// ========== ADMIN ==========
+function switchTab(id){
+  document.querySelectorAll('.admin-tab').forEach((t,i)=>t.classList.toggle('active',['tab-ans','tab-quiz'][i]===id));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+async function openAdmin(){
+  await renderAdminAns();
+  await renderAdminQuiz();
+  document.getElementById('admin-panel').style.display='block';
+}
+function closeAdmin(){document.getElementById('admin-panel').style.display='none';}
+
+async function renderAdminAns(){
+  const el=document.getElementById('tab-ans');
+  el.innerHTML='<div class="admin-empty">Loading... 💜</div>';
+  let data=[];
+  try{
+    if(window._fbReady && window._fbGetAnswers){
+      data=await window._fbGetAnswers();
+    } else {
+      data=JSON.parse(localStorage.getItem('zerrin_answers')||'[]');
+    }
+  } catch(e){
+    data=JSON.parse(localStorage.getItem('zerrin_answers')||'[]');
+  }
+  if(!data.length){el.innerHTML='<div class="admin-empty">No text answers yet 😢</div>';return;}
+  el.innerHTML=data.map((e,i)=>`
+    <div class="resp-card">
+      <button class="btn-delete" onclick="delAns('${e.id||i}')">🗑 Delete</button>
+      <div class="resp-time">Response #${i+1} — ${e.ts}</div>
+      <div class="resp-q">Q1 — Enaku Joshua ku enna difference?</div>
+      <div class="resp-a">${e.q1||'(not answered)'}</div>
+      <div class="resp-q">Q2 — Blood kudukum question</div>
+      <div class="resp-a">${e.q2||'(not answered)'}</div>
+      <div class="resp-q">Q3 — Enjoy panna moment</div>
+      <div class="resp-a">${e.q3||'(not answered)'}</div>
+    </div>`).join('');
+}
+
+async function delAns(id){
+  if(!confirm('Delete this response?'))return;
+  try{
+    if(window._fbReady && window._fbDeleteAnswer && id && !String(id).match(/^\d+$/)){
+      // id is a Firebase document id (non-numeric string)
+      await window._fbDeleteAnswer(id);
+      showFbStatus('🗑 Deleted from Firebase');
+    } else {
+      // id is a numeric index - fallback localStorage
+      const arr=JSON.parse(localStorage.getItem('zerrin_answers')||'[]');
+      arr.splice(parseInt(id),1);
+      localStorage.setItem('zerrin_answers',JSON.stringify(arr));
+    }
+  } catch(e){
+    console.error('Delete error:',e);
+    showFbStatus('⚠ Delete failed', false);
+  }
+  await renderAdminAns();
+}
+
+async function renderAdminQuiz(){
+  const el=document.getElementById('tab-quiz');
+  el.innerHTML='<div class="admin-empty">Loading... 💜</div>';
+  let data=[];
+  try{
+    if(window._fbReady && window._fbGetQuiz){
+      data=await window._fbGetQuiz();
+    } else {
+      data=JSON.parse(localStorage.getItem('zerrin_quiz')||'[]');
+    }
+  } catch(e){
+    data=JSON.parse(localStorage.getItem('zerrin_quiz')||'[]');
+  }
+  if(!data.length){el.innerHTML='<div class="admin-empty">No quiz results yet 🎯</div>';return;}
+  el.innerHTML=data.map((s,i)=>`
+    <div class="resp-card">
+      <button class="btn-delete" onclick="delQuiz('${s.id||i}')">🗑 Delete</button>
+      <div class="resp-time">Session #${i+1} — ${s.ts}</div>
+      ${(s.log||[]).map(a=>`
+        <div class="resp-q">${a.question}</div>
+        <div class="resp-a">${a.chosen} <span class="quiz-badge ${a.ok?'badge-ok':'badge-ng'}">${a.ok?'✓ Correct':'✗ Wrong'}</span><br><small style="color:rgba(255,255,255,.4);font-size:.8rem;">Correct: ${a.correct}</small></div>
+      `).join('')}
+    </div>`).join('');
+}
+
+async function delQuiz(id){
+  if(!confirm('Delete this quiz session?'))return;
+  try{
+    if(window._fbReady && window._fbDeleteQuiz && id && !String(id).match(/^\d+$/)){
+      await window._fbDeleteQuiz(id);
+      showFbStatus('🗑 Deleted from Firebase');
+    } else {
+      const arr=JSON.parse(localStorage.getItem('zerrin_quiz')||'[]');
+      arr.splice(parseInt(id),1);
+      localStorage.setItem('zerrin_quiz',JSON.stringify(arr));
+    }
+  } catch(e){
+    console.error('Delete error:',e);
+    showFbStatus('⚠ Delete failed', false);
+  }
+  await renderAdminQuiz();
+}
+
+window.switchTab=switchTab;window.openAdmin=openAdmin;window.closeAdmin=closeAdmin;
+window.delAns=delAns;window.delQuiz=delQuiz;
+window.goPage=goPage;window.goBack=goBack;window.showHorror=showHorror;window.closeHorror=closeHorror;
+
+// Called once Firebase module sets _fbReady
+window._initApp = function(){
+  // nothing needed — Firebase ready
+};
+</script>
+</body>
+</html>

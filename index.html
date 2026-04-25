@@ -569,7 +569,7 @@ textarea.required-error{border-color:#f87171 !important;animation:shake .4s ease
 <!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, getDocsFromServer, deleteDoc, doc, setDoc, getDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpuAep_E5kAiOTTngi6-ONDpGrqIMkgeo",
@@ -608,11 +608,22 @@ window._fbSaveImage = async (frameId, base64) => {
   await setDoc(doc(db, "zerrin_images", frameId), { data: base64, updatedAt: Date.now() });
 };
 window._fbGetImages = async () => {
-  const snap = await getDocs(collection(db, "zerrin_images"));
+  // Force fetch from server, never from cache
+  const snap = await getDocsFromServer(collection(db, "zerrin_images"));
   const result = {};
   snap.docs.forEach(d => { result[d.id] = d.data().data; });
   return result;
 };
+
+// Real-time listener: auto-update images on ALL devices instantly when any device uploads
+window._fbListenImages = (callback) => {
+  return onSnapshot(collection(db, "zerrin_images"), (snap) => {
+    const result = {};
+    snap.docs.forEach(d => { result[d.id] = d.data().data; });
+    callback(result);
+  });
+};
+
 window._fbReady = true;
 window._initApp && window._initApp();
 </script>
@@ -804,13 +815,17 @@ let pageHistory=[];
 
 function goPage(id){
   const current=document.querySelector('.page.active');
-  if(current && current.id!==id) pageHistory.push(current.id);
+  if(current && current.id!==id){
+    pageHistory.push(current.id);
+    // Stop image listener when leaving page5
+    if(current.id==='page5') stopImageListener();
+  }
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
   history.replaceState(null,'','#'+id);
   if(id==='page4')initQuiz();
-  if(id==='page5'){initCountdown();setTimeout(loadSavedImages,300);}
+  if(id==='page5'){initCountdown();loadSavedImages();}
   const backBtn=document.getElementById('backBtn');
   if(id==='page1'||pageHistory.length===0){backBtn.classList.remove('visible');}
   else{backBtn.classList.add('visible');}
@@ -818,13 +833,15 @@ function goPage(id){
 
 function goBack(){
   if(pageHistory.length===0)return;
+  const current=document.querySelector('.page.active');
+  if(current && current.id==='page5') stopImageListener();
   const prev=pageHistory.pop();
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(prev).classList.add('active');
   window.scrollTo(0,0);
   history.replaceState(null,'','#'+prev);
   if(prev==='page4')initQuiz();
-  if(prev==='page5'){initCountdown();setTimeout(loadSavedImages,300);}
+  if(prev==='page5'){initCountdown();loadSavedImages();}
   const backBtn=document.getElementById('backBtn');
   if(prev==='page1'||pageHistory.length===0){backBtn.classList.remove('visible');}
   else{backBtn.classList.add('visible');}
@@ -836,7 +853,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.getElementById(hash).classList.add('active');
     if(hash==='page4')initQuiz();
-    if(hash==='page5'){initCountdown();setTimeout(loadSavedImages,600);}
+    if(hash==='page5'){initCountdown();loadSavedImages();}
   }
 });
 
@@ -1026,20 +1043,41 @@ async function loadImg(e,fid){
   r.readAsDataURL(f);
 }
 
+async function renderImages(imgs){
+  ['f1','f2','f3','f4'].forEach(fid=>{
+    const el=document.getElementById(fid);
+    if(!el) return;
+    if(imgs[fid]){
+      el.innerHTML=`<img src="${imgs[fid]}" alt="Our photo" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
+    } else {
+      // Only reset if currently showing an image that doesn't match
+      if(!el.querySelector('.img-placeholder')){
+        el.innerHTML=`<div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
+      }
+    }
+  });
+}
+
+let _imgUnsubscribe = null;
+
 async function loadSavedImages(){
   try{
     await waitForFirebase(8000);
-    const imgs=await window._fbGetImages();
-    Object.keys(imgs).forEach(fid=>{
-      const el=document.getElementById(fid);
-      if(el && imgs[fid]){
-        el.innerHTML=`<img src="${imgs[fid]}" alt="Our photo" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
-      }
+    // Cancel any previous listener
+    if(_imgUnsubscribe){ _imgUnsubscribe(); _imgUnsubscribe=null; }
+    // Start real-time listener — fires immediately with current data, then on every change
+    _imgUnsubscribe = window._fbListenImages((imgs)=>{
+      renderImages(imgs);
     });
   } catch(e){
     console.error('Load images failed:', e);
   }
 }
+
+function stopImageListener(){
+  if(_imgUnsubscribe){ _imgUnsubscribe(); _imgUnsubscribe=null; }
+}
+
 window.loadImg=loadImg;window.loadSavedImages=loadSavedImages;
 
 // ========== COUNTDOWN ==========

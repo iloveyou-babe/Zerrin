@@ -370,6 +370,57 @@ textarea.required-error{border-color:#f87171 !important;animation:shake .4s ease
 .badge-ng{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;}
 .btn-close-admin{display:block;width:100%;text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--pink-200);font-family:'DM Sans',sans-serif;padding:.8rem;border-radius:50px;cursor:pointer;margin-top:1.5rem;font-size:.9rem;transition:background .2s;}
 .btn-close-admin:hover{background:rgba(255,255,255,.13);}
+
+/* ===== ADMIN EXTRA TABS ===== */
+.admin-tabs{flex-wrap:wrap;}
+.admin-section-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--pink-300);margin:1.2rem 0 .8rem;text-align:center;}
+/* Photos tab */
+.admin-photos-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
+.admin-photo-slot{background:rgba(180,40,90,.2);border:1px solid rgba(255,182,193,.2);border-radius:14px;overflow:hidden;aspect-ratio:1;position:relative;}
+.admin-photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.admin-photo-slot .slot-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;color:var(--pink-400);font-size:.75rem;}
+.admin-photo-slot .slot-placeholder span{font-size:1.8rem;}
+.admin-photo-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.admin-photo-slot .del-photo-btn{position:absolute;top:4px;right:4px;background:rgba(239,68,68,.7);border:none;border-radius:50%;width:22px;height:22px;color:#fff;font-size:.65rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;}
+.btn-add-photo-slot{width:100%;background:rgba(247,99,168,.15);border:1.5px dashed rgba(247,99,168,.4);color:var(--pink-300);font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.7rem;border-radius:12px;cursor:pointer;transition:all .2s;margin-bottom:.8rem;}
+.btn-add-photo-slot:hover{background:rgba(247,99,168,.25);}
+/* About editor */
+.about-editor-box{background:rgba(180,40,90,.2);border:1px solid rgba(255,182,193,.2);border-radius:14px;padding:1.2rem;margin-bottom:.8rem;}
+.about-editor-label{font-size:.78rem;color:var(--pink-400);margin-bottom:.5rem;letter-spacing:.06em;}
+.about-editor-textarea{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,182,193,.25);border-radius:10px;padding:.7rem;color:#fce4ec;font-family:'Cormorant Garamond',serif;font-size:.95rem;resize:vertical;min-height:110px;outline:none;line-height:1.6;}
+.about-editor-textarea:focus{border-color:var(--pink-400);}
+.btn-save-about{width:100%;background:linear-gradient(135deg,var(--pink-600),var(--rose-500));color:#fff;font-family:'DM Sans',sans-serif;padding:.7rem;border-radius:50px;border:none;cursor:pointer;font-size:.88rem;margin-top:.4rem;transition:all .2s;}
+.btn-save-about:hover{transform:scale(1.02);}
+/* Questions editor */
+.q-editor-card{background:rgba(180,40,90,.2);border:1px solid rgba(255,182,193,.2);border-radius:14px;padding:1.2rem;margin-bottom:.75rem;position:relative;}
+.q-editor-num{font-size:.72rem;color:var(--pink-400);margin-bottom:.4rem;letter-spacing:.1em;}
+.q-editor-input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,182,193,.25);border-radius:10px;padding:.65rem .8rem;color:#fce4ec;font-family:'Playfair Display',serif;font-size:.92rem;resize:none;min-height:60px;outline:none;margin-bottom:.5rem;}
+.q-editor-input:focus{border-color:var(--pink-400);}
+.q-editor-placeholder{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,182,193,.2);border-radius:8px;padding:.5rem .8rem;color:rgba(252,228,236,.5);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;}
+.q-editor-placeholder:focus{border-color:var(--pink-400);}
+.btn-del-q{position:absolute;top:.8rem;right:.8rem;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;font-size:.72rem;padding:.25rem .6rem;border-radius:8px;cursor:pointer;}
+.btn-del-q:hover{background:rgba(239,68,68,.3);}
+.btn-add-q{width:100%;background:rgba(247,99,168,.15);border:1.5px dashed rgba(247,99,168,.4);color:var(--pink-300);font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.7rem;border-radius:12px;cursor:pointer;transition:all .2s;margin-bottom:.8rem;}
+.btn-add-q:hover{background:rgba(247,99,168,.25);}
+.btn-save-questions{width:100%;background:linear-gradient(135deg,var(--pink-600),var(--rose-500));color:#fff;font-family:'DM Sans',sans-serif;padding:.7rem;border-radius:50px;border:none;cursor:pointer;font-size:.88rem;margin-top:.3rem;transition:all .2s;}
+.btn-save-questions:hover{transform:scale(1.02);}
+
+/* Quiz editor specific */
+.quiz-editor-card{background:rgba(180,40,90,.2);border:1px solid rgba(255,182,193,.2);border-radius:14px;padding:1.2rem;margin-bottom:.75rem;position:relative;}
+.quiz-editor-num{font-size:.72rem;color:var(--pink-400);margin-bottom:.4rem;letter-spacing:.1em;}
+.quiz-editor-q{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,182,193,.25);border-radius:10px;padding:.65rem .8rem;color:#fce4ec;font-family:'Playfair Display',serif;font-size:.92rem;resize:none;min-height:55px;outline:none;margin-bottom:.7rem;}
+.quiz-editor-q:focus{border-color:var(--pink-400);}
+.quiz-opts-label{font-size:.72rem;color:var(--pink-400);margin-bottom:.4rem;letter-spacing:.06em;}
+.quiz-opt-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;}
+.quiz-opt-row input[type=text]{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,182,193,.2);border-radius:8px;padding:.45rem .7rem;color:#fce4ec;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;}
+.quiz-opt-row input[type=text]:focus{border-color:var(--pink-400);}
+.quiz-opt-row input[type=radio]{accent-color:var(--pink-500);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+.quiz-opt-correct-label{font-size:.7rem;color:var(--pink-400);white-space:nowrap;}
+.btn-del-opt{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);color:#fca5a5;font-size:.68rem;padding:.2rem .45rem;border-radius:6px;cursor:pointer;flex-shrink:0;}
+.btn-del-opt:hover{background:rgba(239,68,68,.3);}
+.btn-add-opt{background:rgba(247,99,168,.1);border:1px dashed rgba(247,99,168,.3);color:var(--pink-400);font-family:'DM Sans',sans-serif;font-size:.75rem;padding:.35rem .8rem;border-radius:8px;cursor:pointer;margin-top:.2rem;transition:all .2s;}
+.btn-add-opt:hover{background:rgba(247,99,168,.2);}
+.correct-hint{font-size:.68rem;color:rgba(74,222,128,.7);margin-top:.3rem;}
 .admin-trigger{position:fixed;bottom:16px;right:16px;width:36px;height:36px;background:rgba(255,255,255,.4);border:1.5px solid rgba(255,182,193,.5);border-radius:50%;z-index:100;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s;backdrop-filter:blur(8px);}
 .admin-trigger:hover{background:rgba(255,240,246,.8);}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
@@ -434,11 +485,59 @@ textarea.required-error{border-color:#f87171 !important;animation:shake .4s ease
     <div class="admin-title">💜 Admin Panel</div>
     <div class="admin-sub">Zerrin's answers — saved with love</div>
     <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchTab('tab-ans')">📝 Her Answers</button>
-      <button class="admin-tab" onclick="switchTab('tab-quiz')">🎯 Quiz Results</button>
+      <button class="admin-tab active" id="atab-ans" onclick="switchTab('tab-ans','atab-ans')">📝 Answers</button>
+      <button class="admin-tab" id="atab-quiz" onclick="switchTab('tab-quiz','atab-quiz')">🎯 Quiz</button>
+      <button class="admin-tab" id="atab-photos" onclick="switchTab('tab-photos','atab-photos')">📸 Photos</button>
+      <button class="admin-tab" id="atab-about" onclick="switchTab('tab-about','atab-about')">💜 About</button>
+      <button class="admin-tab" id="atab-qedit" onclick="switchTab('tab-qedit','atab-qedit')">❓ Questions</button>
+      <button class="admin-tab" id="atab-quizedit" onclick="switchTab('tab-quizedit','atab-quizedit')">🎯 Edit Quiz</button>
     </div>
+
+    <!-- Tab: Answers -->
     <div class="tab-content active" id="tab-ans"></div>
+
+    <!-- Tab: Quiz -->
     <div class="tab-content" id="tab-quiz"></div>
+
+    <!-- Tab: Photos -->
+    <div class="tab-content" id="tab-photos">
+      <div class="admin-section-title">📸 Manage Photos</div>
+      <div class="admin-photos-grid" id="adminPhotoGrid"></div>
+      <button class="btn-add-photo-slot" onclick="adminAddPhotoSlot()">＋ Add New Photo Slot</button>
+      <div style="font-size:.75rem;color:var(--pink-400);text-align:center;margin-bottom:.5rem;">Photos sync across all devices via Firebase 💜</div>
+    </div>
+
+    <!-- Tab: About editor -->
+    <div class="tab-content" id="tab-about">
+      <div class="admin-section-title">💜 Edit About Texts</div>
+      <div class="about-editor-box">
+        <div class="about-editor-label">WHO IS ZERRIN TO ME?</div>
+        <textarea class="about-editor-textarea" id="edit-about1"></textarea>
+        <button class="btn-save-about" onclick="saveAboutText('about1','edit-about1')">💾 Save "Who is Zerrin"</button>
+      </div>
+      <div class="about-editor-box">
+        <div class="about-editor-label">WHAT YOU MEAN TO ME</div>
+        <textarea class="about-editor-textarea" id="edit-about2"></textarea>
+        <button class="btn-save-about" onclick="saveAboutText('about2','edit-about2')">💾 Save "What you mean"</button>
+      </div>
+    </div>
+
+    <!-- Tab: Questions editor -->
+    <div class="tab-content" id="tab-qedit">
+      <div class="admin-section-title">❓ Edit Questions & Polls</div>
+      <div id="qEditorList"></div>
+      <button class="btn-add-q" onclick="adminAddQuestion()">＋ Add New Question</button>
+      <button class="btn-save-questions" onclick="saveAllQuestions()">💾 Save All Questions</button>
+    </div>
+
+    <!-- Tab: Quiz Editor -->
+    <div class="tab-content" id="tab-quizedit">
+      <div class="admin-section-title">🎯 Edit "How well do you know us?"</div>
+      <div id="quizEditorList"></div>
+      <button class="btn-add-q" onclick="adminAddQuizQ()">＋ Add New Quiz Question</button>
+      <button class="btn-save-questions" onclick="saveAllQuizQuestions()">💾 Save Quiz & Apply</button>
+    </div>
+
     <button class="btn-close-admin" onclick="closeAdmin()">✕ Close Panel</button>
   </div>
 </div>
@@ -613,6 +712,20 @@ window._fbGetImages = async () => {
   const result = {};
   snap.docs.forEach(d => { result[d.id] = d.data().data; });
   return result;
+};
+
+// Delete a single image frame
+window._fbDeleteImage = async (frameId) => {
+  await deleteDoc(doc(db, "zerrin_images", frameId));
+};
+
+// Config: about texts + questions
+window._fbSaveConfig = async (partial) => {
+  await setDoc(doc(db, "zerrin_config", "main"), partial, {merge: true});
+};
+window._fbGetConfig = async () => {
+  const snap = await getDoc(doc(db, "zerrin_config", "main"));
+  return snap.exists() ? snap.data() : null;
 };
 
 // Real-time listener: auto-update images on ALL devices instantly when any device uploads
@@ -903,29 +1016,32 @@ function waitForFirebase(timeoutMs=8000){
 
 // ========== SUBMIT ANSWERS — FIREBASE ONLY ==========
 async function submitAnswers(){
-  const a1=document.getElementById('a1').value.trim();
-  const a2=document.getElementById('a2').value.trim();
-  const a3=document.getElementById('a3').value.trim();
+  const count = window._currentQCount || 3;
+  const answers = {};
+  let hasError = false;
 
-  let hasError=false;
-  ['a1','a2','a3'].forEach((id,i)=>{
-    const val=document.getElementById(id).value.trim();
-    const hint=document.getElementById('hint'+(i+1));
+  for(let i=1;i<=count;i++){
+    const el = document.getElementById('a'+i);
+    const hint = document.getElementById('hint'+i);
+    if(!el) continue;
+    const val = el.value.trim();
     if(!val){
-      document.getElementById(id).classList.add('required-error');
-      hint.classList.add('show');
-      hasError=true;
-      setTimeout(()=>document.getElementById(id).classList.remove('required-error'),500);
+      el.classList.add('required-error');
+      if(hint) hint.classList.add('show');
+      hasError = true;
+      setTimeout(()=>el.classList.remove('required-error'),500);
     } else {
-      document.getElementById(id).classList.remove('required-error');
-      hint.classList.remove('show');
+      el.classList.remove('required-error');
+      if(hint) hint.classList.remove('show');
+      answers['q'+i] = val;
     }
-  });
+  }
+
   if(hasError){playWrong();return;}
 
   const entry={
     ts: new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),
-    q1:a1, q2:a2, q3:a3,
+    ...answers,
     createdAt: Date.now()
   };
 
@@ -936,7 +1052,6 @@ async function submitAnswers(){
   submitBtn.disabled=true;
 
   try {
-    // Wait up to 8 seconds for Firebase to initialise
     await waitForFirebase(8000);
     savingEl.textContent='💜 Saving to our memory box...';
     await window._fbSaveAnswers(entry);
@@ -963,7 +1078,7 @@ async function submitAnswers(){
 window.submitAnswers=submitAnswers;
 
 // ========== QUIZ ==========
-const QUIZ=[
+let QUIZ=[
   {q:'My favourite color is... 🎨',opts:['Black','Blue','White','Purple'],ans:0},
   {q:'Enaku pudicha person yaru? 💜',opts:['Amma','Zerrin','Friends','Myself'],ans:1},
   {q:'What is my love language for you? 💕',opts:['Gifts','Words of affirmation','Quality time','Acts of service'],ans:2}
@@ -1088,13 +1203,34 @@ async function loadImg(e,fid){
 }
 
 async function renderImages(imgs){
-  ['f1','f2','f3','f4'].forEach(fid=>{
+  const grid = document.querySelector('#page5 .img-grid');
+  if(!grid) return;
+
+  // Get all slot IDs: what's in Firebase + any existing frames
+  const existingIds = Array.from(grid.querySelectorAll('.img-frame')).map(el=>el.id).filter(Boolean);
+  const allIds = new Set([...existingIds, ...Object.keys(imgs)]);
+  // Sort
+  const sorted = Array.from(allIds).sort((a,b)=>{
+    const na=parseInt(a.replace('f',''))||0,nb=parseInt(b.replace('f',''))||0;return na-nb;
+  });
+
+  // Add any missing frames to the grid
+  sorted.forEach(fid=>{
+    if(!document.getElementById(fid)){
+      const frame = document.createElement('div');
+      frame.className='img-frame'; frame.id=fid;
+      frame.innerHTML=`<div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
+      grid.appendChild(frame);
+    }
+  });
+
+  // Update each frame
+  sorted.forEach(fid=>{
     const el=document.getElementById(fid);
     if(!el) return;
     if(imgs[fid]){
       el.innerHTML=`<img src="${imgs[fid]}" alt="Our photo" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
     } else {
-      // Only reset if currently showing an image that doesn't match
       if(!el.querySelector('.img-placeholder')){
         el.innerHTML=`<div class="img-placeholder"><div class="img-placeholder-icon">📷</div><div class="img-placeholder-text">Tap to add photo</div></div><input type="file" accept="image/*" class="img-add-btn" onchange="loadImg(event,'${fid}')">`;
       }
@@ -1155,11 +1291,17 @@ function checkPw(){
 }
 window.openLock=openLock;window.closeLock=closeLock;window.checkPw=checkPw;
 
-function switchTab(id){
+function switchTab(id, tabId){
   playTap();
-  document.querySelectorAll('.admin-tab').forEach((t,i)=>t.classList.toggle('active',['tab-ans','tab-quiz'][i]===id));
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  if(tabId) document.getElementById(tabId).classList.add('active');
+  // Load content when switching
+  if(id==='tab-photos') renderAdminPhotos();
+  if(id==='tab-about') loadAboutEditors();
+  if(id==='tab-qedit') loadQEditor();
+  if(id==='tab-quizedit') loadQuizEditor();
 }
 
 async function openAdmin(){
@@ -1168,6 +1310,407 @@ async function openAdmin(){
   document.getElementById('admin-panel').style.display='block';
 }
 function closeAdmin(){playClick();document.getElementById('admin-panel').style.display='none';}
+
+// ===== ADMIN: PHOTOS =====
+// We support dynamic slots: f1..fN stored in Firebase as "zerrin_images"
+// Admin can add slots and upload pics to each
+let _adminPhotoSlots = ['f1','f2','f3','f4']; // default 4
+let _adminPhotoData = {}; // fid -> base64
+
+async function renderAdminPhotos(){
+  const grid = document.getElementById('adminPhotoGrid');
+  grid.innerHTML = '<div class="admin-empty">Loading photos... 💜</div>';
+  try {
+    await waitForFirebase(8000);
+    const imgs = await window._fbGetImages();
+    _adminPhotoData = imgs;
+    // Discover all slot IDs from firebase + defaults
+    const allSlots = new Set(_adminPhotoSlots);
+    Object.keys(imgs).forEach(k => allSlots.add(k));
+    // Sort slots: f1,f2,...f10 etc
+    _adminPhotoSlots = Array.from(allSlots).sort((a,b)=>{
+      const na=parseInt(a.replace('f',''))||0, nb=parseInt(b.replace('f',''))||0;
+      return na-nb;
+    });
+    renderAdminPhotoGrid();
+  } catch(e){
+    grid.innerHTML = '<div class="admin-empty">Could not load photos ⚠</div>';
+  }
+}
+
+function renderAdminPhotoGrid(){
+  const grid = document.getElementById('adminPhotoGrid');
+  grid.innerHTML = '';
+  _adminPhotoSlots.forEach(fid => {
+    const slot = document.createElement('div');
+    slot.className = 'admin-photo-slot';
+    slot.id = 'aslot-'+fid;
+    if(_adminPhotoData[fid]){
+      slot.innerHTML = `<img src="${_adminPhotoData[fid]}" alt="Photo">
+        <button class="del-photo-btn" onclick="adminDeletePhoto('${fid}')">✕</button>
+        <input type="file" accept="image/*" onchange="adminUploadPhoto(event,'${fid}')">`;
+    } else {
+      slot.innerHTML = `<div class="slot-placeholder"><span>📷</span>Tap to upload</div>
+        <input type="file" accept="image/*" onchange="adminUploadPhoto(event,'${fid}')">`;
+    }
+    grid.appendChild(slot);
+  });
+}
+
+async function adminUploadPhoto(e, fid){
+  const f = e.target.files[0]; if(!f) return;
+  playTap();
+  const slot = document.getElementById('aslot-'+fid);
+  slot.innerHTML = '<div class="slot-placeholder"><span>⏳</span>Uploading...</div>';
+  try {
+    const b64 = await compressImage(f, 800, 0.75);
+    await waitForFirebase(8000);
+    await window._fbSaveImage(fid, b64);
+    _adminPhotoData[fid] = b64;
+    renderAdminPhotoGrid();
+    // Also refresh main page grid if visible
+    renderImages(_adminPhotoData);
+    showFbStatus('📸 Photo saved!');
+    playCorrect();
+  } catch(err){
+    showFbStatus('⚠ Upload failed: '+String(err).slice(0,50), false);
+    renderAdminPhotoGrid();
+  }
+}
+
+async function adminDeletePhoto(fid){
+  if(!confirm('Delete this photo?')) return;
+  playWrong();
+  try {
+    await waitForFirebase(8000);
+    // Delete from Firebase
+    const {deleteDoc:dd, doc:dc} = window._fbFirestoreUtils || {};
+    if(window._fbDeleteImage){
+      await window._fbDeleteImage(fid);
+    }
+    delete _adminPhotoData[fid];
+    renderAdminPhotoGrid();
+    renderImages(_adminPhotoData);
+    showFbStatus('🗑 Photo deleted');
+  } catch(e){
+    // Even if firebase delete fails, clear locally
+    delete _adminPhotoData[fid];
+    renderAdminPhotoGrid();
+    showFbStatus('⚠ Firebase delete failed, cleared locally', false);
+  }
+}
+
+function adminAddPhotoSlot(){
+  playClick();
+  // Find next slot number
+  const nums = _adminPhotoSlots.map(s=>parseInt(s.replace('f',''))||0);
+  const next = (Math.max(0,...nums)) + 1;
+  const newFid = 'f'+next;
+  _adminPhotoSlots.push(newFid);
+  renderAdminPhotoGrid();
+  showFbStatus('📸 New photo slot added — tap to upload!');
+}
+
+// Also expose adminUploadPhoto globally
+window.adminUploadPhoto=adminUploadPhoto;
+window.adminDeletePhoto=adminDeletePhoto;
+window.adminAddPhotoSlot=adminAddPhotoSlot;
+
+// ===== ADMIN: ABOUT TEXT EDITOR =====
+// Store about texts in Firebase under "zerrin_config" doc
+const ABOUT_DEFAULTS = {
+  about1: `Zerrin... you are not just my girlfriend, you are my calm when everything feels like chaos. The moment I saw you, something in me knew — this girl is different. You have this softness that makes everyone around you feel safe, yet a strength that quietly holds everything together. You don't even realise how beautiful you are — not just your face, but the way you care, the way you laugh, the way you say my name. Every day with you feels like the universe finally got something right. You are my favourite person on this entire planet, and I would choose you in every lifetime, every version of this world. Happy Birthday, my love. 🌸`,
+  about2: `You know what's funny? Before you, I thought I was fine on my own. Then you came and ruined that perfectly. Now I can't imagine a single morning without thinking about you. Your smile is the first thing I want to see and your voice is the last thing I want to hear. You are my home, Zerrin. Not a place — you. Wherever you are, that's where I belong. I love your stubbornness, your kindness, your silly jokes, even the way you argue. Every piece of you is my favourite thing. Thank you for being you. Thank you for choosing me. 💜`
+};
+
+async function loadAboutEditors(){
+  document.getElementById('edit-about1').value = ABOUT_DEFAULTS.about1;
+  document.getElementById('edit-about2').value = ABOUT_DEFAULTS.about2;
+  try {
+    await waitForFirebase(5000);
+    if(window._fbGetConfig){
+      const cfg = await window._fbGetConfig();
+      if(cfg && cfg.about1) document.getElementById('edit-about1').value = cfg.about1;
+      if(cfg && cfg.about2) document.getElementById('edit-about2').value = cfg.about2;
+    }
+  } catch(e){}
+}
+
+async function saveAboutText(key, textareaId){
+  playClick();
+  const val = document.getElementById(textareaId).value.trim();
+  if(!val){ showFbStatus('⚠ Text cannot be empty', false); return; }
+  try {
+    await waitForFirebase(8000);
+    if(window._fbSaveConfig){
+      await window._fbSaveConfig({[key]: val});
+    }
+    // Update live on page
+    if(key==='about1'){
+      const el = document.querySelector('#abox1 .about-full-text');
+      if(el) el.textContent = val;
+    } else {
+      const el = document.querySelector('#abox2 .about-full-text');
+      if(el) el.textContent = val;
+    }
+    playCorrect();
+    showFbStatus('💜 Saved!');
+  } catch(e){
+    showFbStatus('⚠ Save failed: '+String(e).slice(0,50), false);
+    playWrong();
+  }
+}
+
+window.saveAboutText=saveAboutText;
+
+// ===== ADMIN: QUESTIONS EDITOR =====
+// Questions stored in Firebase "zerrin_config" as questions array
+// Each question: { q: text, placeholder: text }
+let _adminQuestions = [
+  {q:"Enaku Joshua ku enna difference? 🤔", placeholder:"Write your heart out..."},
+  {q:"Oru situation la enaku unga vitla appa amma ku etho agitu, nee oru person ku tha blood kuduka mudium kapatha na, yaruku kudupa? 💉", placeholder:"Be honest, Zerrin..."},
+  {q:"Life la enkuda enjoy panna moment ethu? 🌟", placeholder:"Your favourite memory with me..."}
+];
+
+async function loadQEditor(){
+  // Try loading from firebase
+  try {
+    await waitForFirebase(5000);
+    if(window._fbGetConfig){
+      const cfg = await window._fbGetConfig();
+      if(cfg && cfg.questions && cfg.questions.length) _adminQuestions = cfg.questions;
+    }
+  } catch(e){}
+  renderQEditor();
+}
+
+function renderQEditor(){
+  const list = document.getElementById('qEditorList');
+  list.innerHTML = '';
+  _adminQuestions.forEach((q,i)=>{
+    const card = document.createElement('div');
+    card.className = 'q-editor-card';
+    card.id = 'qec-'+i;
+    card.innerHTML = `
+      <div class="q-editor-num">QUESTION ${String(i+1).padStart(2,'0')}</div>
+      ${_adminQuestions.length > 1 ? `<button class="btn-del-q" onclick="adminDeleteQuestion(${i})">🗑 Remove</button>` : ''}
+      <textarea class="q-editor-input" id="qeq-${i}" placeholder="Type the question...">${q.q}</textarea>
+      <input class="q-editor-placeholder" id="qep-${i}" type="text" placeholder="Input placeholder text..." value="${q.placeholder||''}">
+    `;
+    list.appendChild(card);
+  });
+}
+
+function adminAddQuestion(){
+  playClick();
+  _adminQuestions.push({q:"", placeholder:"Write your answer..."});
+  renderQEditor();
+  // Scroll to new item
+  setTimeout(()=>{
+    const cards = document.querySelectorAll('.q-editor-card');
+    if(cards.length) cards[cards.length-1].scrollIntoView({behavior:'smooth'});
+  }, 100);
+}
+
+function adminDeleteQuestion(i){
+  if(_adminQuestions.length <= 1){ showFbStatus('⚠ At least one question required', false); return; }
+  if(!confirm('Delete this question?')) return;
+  playWrong();
+  _adminQuestions.splice(i, 1);
+  renderQEditor();
+}
+
+async function saveAllQuestions(){
+  playClick();
+  // Read current values from editor
+  const updated = _adminQuestions.map((_,i)=>({
+    q: (document.getElementById('qeq-'+i)||{}).value || _.q,
+    placeholder: (document.getElementById('qep-'+i)||{}).value || _.placeholder || 'Write here...'
+  })).filter(q=>q.q.trim());
+
+  if(!updated.length){ showFbStatus('⚠ No questions to save', false); return; }
+
+  _adminQuestions = updated;
+
+  // Update live question cards on page3
+  applyQuestionsToPage3(updated);
+
+  try {
+    await waitForFirebase(8000);
+    if(window._fbSaveConfig){
+      await window._fbSaveConfig({questions: updated});
+    }
+    playCorrect();
+    showFbStatus('💜 Questions saved & applied!');
+  } catch(e){
+    showFbStatus('⚠ Firebase save failed — applied locally', false);
+    playWrong();
+  }
+}
+
+function applyQuestionsToPage3(questions){
+  // Rebuild page3 question cards dynamically
+  const page3 = document.getElementById('page3');
+  // Remove existing q-cards
+  page3.querySelectorAll('.q-card').forEach(el=>el.remove());
+  page3.querySelector('.submit-area') && null; // keep submit area
+
+  // Insert before submit-area
+  const submitArea = page3.querySelector('.submit-area');
+  questions.forEach((q,i)=>{
+    const num = i+1;
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.innerHTML = `
+      <div class="q-num">QUESTION ${String(num).padStart(2,'0')}</div>
+      <div class="q-text">${q.q}</div>
+      <textarea id="a${num}" placeholder="${q.placeholder||'Write here...'}"></textarea>
+      <div class="field-hint" id="hint${num}">Please answer this question, Zerrin 💜</div>
+    `;
+    page3.insertBefore(card, submitArea);
+  });
+  // Update submit to validate correct number of answers
+  window._currentQCount = questions.length;
+}
+
+window.adminAddQuestion=adminAddQuestion;
+window.adminDeleteQuestion=adminDeleteQuestion;
+window.saveAllQuestions=saveAllQuestions;
+
+// ===== ADMIN: QUIZ EDITOR =====
+// _adminQuiz mirrors QUIZ array, loaded from Firebase config
+
+async function loadQuizEditor(){
+  // Try loading from firebase
+  try {
+    await waitForFirebase(5000);
+    if(window._fbGetConfig){
+      const cfg = await window._fbGetConfig();
+      if(cfg && cfg.quiz && cfg.quiz.length){
+        QUIZ = cfg.quiz;
+      }
+    }
+  } catch(e){}
+  renderQuizEditor();
+}
+
+function renderQuizEditor(){
+  const list = document.getElementById('quizEditorList');
+  list.innerHTML = '';
+  QUIZ.forEach((item, qi) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-editor-card';
+    card.id = 'qzedit-'+qi;
+
+    // Build options HTML
+    let optsHtml = item.opts.map((opt, oi) => `
+      <div class="quiz-opt-row" id="qzoptrow-${qi}-${oi}">
+        <input type="radio" name="qzcorrect-${qi}" id="qzrad-${qi}-${oi}" value="${oi}" ${item.ans===oi?'checked':''} onchange="quizMarkCorrect(${qi},${oi})">
+        <input type="text" id="qzopt-${qi}-${oi}" value="${opt}" placeholder="Option ${String.fromCharCode(65+oi)}">
+        ${item.opts.length > 2 ? `<button class="btn-del-opt" onclick="quizDelOpt(${qi},${oi})">✕</button>` : ''}
+      </div>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="quiz-editor-num">QUIZ Q${qi+1}</div>
+      ${QUIZ.length > 1 ? `<button class="btn-del-q" onclick="adminDelQuizQ(${qi})">🗑 Remove</button>` : ''}
+      <textarea class="quiz-editor-q" id="qzq-${qi}" placeholder="Type the question...">${item.q}</textarea>
+      <div class="quiz-opts-label">OPTIONS — ⭕ tick the correct answer</div>
+      <div id="qzopts-${qi}">${optsHtml}</div>
+      ${item.opts.length < 4 ? `<button class="btn-add-opt" onclick="quizAddOpt(${qi})">＋ Add Option</button>` : ''}
+      <div class="correct-hint">✓ Correct answer: <strong>${String.fromCharCode(65+item.ans)}) ${item.opts[item.ans]||'?'}</strong></div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function quizMarkCorrect(qi, oi){
+  QUIZ[qi].ans = oi;
+  // Update correct hint text live
+  const card = document.getElementById('qzedit-'+qi);
+  if(card){
+    const hint = card.querySelector('.correct-hint');
+    const optVal = (document.getElementById('qzopt-'+qi+'-'+oi)||{}).value || QUIZ[qi].opts[oi] || '?';
+    if(hint) hint.innerHTML = `✓ Correct answer: <strong>${String.fromCharCode(65+oi)}) ${optVal}</strong>`;
+  }
+}
+
+function quizAddOpt(qi){
+  playClick();
+  if(QUIZ[qi].opts.length >= 4){ showFbStatus('⚠ Max 4 options allowed', false); return; }
+  QUIZ[qi].opts.push('');
+  renderQuizEditor();
+}
+
+function quizDelOpt(qi, oi){
+  if(QUIZ[qi].opts.length <= 2){ showFbStatus('⚠ Need at least 2 options', false); return; }
+  QUIZ[qi].opts.splice(oi, 1);
+  // Fix answer index if needed
+  if(QUIZ[qi].ans >= QUIZ[qi].opts.length) QUIZ[qi].ans = 0;
+  renderQuizEditor();
+}
+
+function adminAddQuizQ(){
+  playClick();
+  QUIZ.push({q:'', opts:['','','',''], ans:0});
+  renderQuizEditor();
+  setTimeout(()=>{
+    const cards = document.querySelectorAll('.quiz-editor-card');
+    if(cards.length) cards[cards.length-1].scrollIntoView({behavior:'smooth'});
+  }, 100);
+}
+
+function adminDelQuizQ(qi){
+  if(QUIZ.length <= 1){ showFbStatus('⚠ At least one quiz question required', false); return; }
+  if(!confirm('Delete this quiz question?')) return;
+  playWrong();
+  QUIZ.splice(qi, 1);
+  renderQuizEditor();
+}
+
+async function saveAllQuizQuestions(){
+  playClick();
+  // Read current values from DOM
+  const updated = QUIZ.map((item, qi) => {
+    const qText = (document.getElementById('qzq-'+qi)||{}).value || item.q;
+    const opts = item.opts.map((_,oi) => (document.getElementById('qzopt-'+qi+'-'+oi)||{}).value || _);
+    const ans = item.ans;
+    return {q: qText.trim(), opts, ans};
+  }).filter(item => item.q && item.opts.some(o=>o.trim()));
+
+  if(!updated.length){ showFbStatus('⚠ No quiz questions to save', false); return; }
+
+  // Apply immediately to live quiz
+  QUIZ.length = 0;
+  updated.forEach(q => QUIZ.push(q));
+  // Reset quiz state
+  curQ = 0; quizLog = [];
+  // Re-render quiz label
+  const labelEl = document.getElementById('quizLabel');
+  if(labelEl) labelEl.textContent = `Question 1 of ${QUIZ.length}`;
+
+  renderQuizEditor();
+
+  try {
+    await waitForFirebase(8000);
+    if(window._fbSaveConfig){
+      await window._fbSaveConfig({quiz: updated});
+    }
+    playCorrect();
+    showFbStatus('🎯 Quiz saved & applied!');
+  } catch(e){
+    showFbStatus('⚠ Firebase save failed — applied locally only', false);
+    playWrong();
+  }
+}
+
+window.loadQuizEditor=loadQuizEditor;
+window.quizMarkCorrect=quizMarkCorrect;
+window.quizAddOpt=quizAddOpt;
+window.quizDelOpt=quizDelOpt;
+window.adminAddQuizQ=adminAddQuizQ;
+window.adminDelQuizQ=adminDelQuizQ;
+window.saveAllQuizQuestions=saveAllQuizQuestions;
 
 async function renderAdminAns(){
   const el=document.getElementById('tab-ans');
@@ -1179,17 +1722,20 @@ async function renderAdminAns(){
     }
   } catch(e){}
   if(!data.length){el.innerHTML='<div class="admin-empty">No text answers yet 😢</div>';return;}
-  el.innerHTML=data.map((e,i)=>`
-    <div class="resp-card">
+  el.innerHTML=data.map((e,i)=>{
+    // Render all q1..qN keys found in the entry
+    const qKeys = Object.keys(e).filter(k=>/^q\d+$/.test(k)).sort();
+    const qLabels = (_adminQuestions||[]).map(q=>q.q);
+    const qRows = qKeys.map((k,qi)=>`
+      <div class="resp-q">Q${qi+1}${qLabels[qi]?' — '+qLabels[qi].slice(0,40)+'…':''}</div>
+      <div class="resp-a">${e[k]||'(not answered)'}</div>
+    `).join('');
+    return `<div class="resp-card">
       <button class="btn-delete" onclick="delAns('${e.id||i}')">🗑 Delete</button>
       <div class="resp-time">Response #${i+1} — ${e.ts}</div>
-      <div class="resp-q">Q1 — Enaku Joshua ku enna difference?</div>
-      <div class="resp-a">${e.q1||'(not answered)'}</div>
-      <div class="resp-q">Q2 — Blood kudukum question</div>
-      <div class="resp-a">${e.q2||'(not answered)'}</div>
-      <div class="resp-q">Q3 — Enjoy panna moment</div>
-      <div class="resp-a">${e.q3||'(not answered)'}</div>
-    </div>`).join('');
+      ${qRows}
+    </div>`;
+  }).join('');
 }
 
 async function delAns(id){
@@ -1251,7 +1797,36 @@ window.showHorror=showHorror;window.closeHorror=closeHorror;window.closeHorrorAn
 window.playClick=playClick;window.playTap=playTap;window.playCorrect=playCorrect;
 window.playHorror=playHorror;window.playWrong=playWrong;
 
-window._initApp = function(){};
+window._initApp = async function(){
+  // Load config from Firebase: about texts + questions
+  try {
+    if(window._fbGetConfig){
+      const cfg = await window._fbGetConfig();
+      if(cfg){
+        // About texts
+        if(cfg.about1){
+          const el = document.querySelector('#abox1 .about-full-text');
+          if(el) el.textContent = cfg.about1;
+        }
+        if(cfg.about2){
+          const el = document.querySelector('#abox2 .about-full-text');
+          if(el) el.textContent = cfg.about2;
+        }
+        // Questions
+        if(cfg.questions && cfg.questions.length){
+          _adminQuestions = cfg.questions;
+          window._currentQCount = cfg.questions.length;
+          applyQuestionsToPage3(cfg.questions);
+        }
+        // Quiz
+        if(cfg.quiz && cfg.quiz.length){
+          QUIZ.length = 0;
+          cfg.quiz.forEach(q => QUIZ.push(q));
+        }
+      }
+    }
+  } catch(e){ console.log('Config load:', e); }
+};
 </script>
 </body>
 </html>
